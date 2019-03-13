@@ -19,3 +19,28 @@ apt-get install -y nginx
 ```
 ### 详解
 您刚刚创建的文件指示apt软件包管理系统使用NGINX官方软件包存储库。 下面的命令下载NGINX GPG包签名密钥并将其导入apt。 提供apt签名密钥使apt系统能够验证来自存储库的包。 apt-get update命令指示apt系统从其已知的存储库刷新其包列表。 刷新包列表后，您可以从官方NGINX存储库安装NGINX。 安装后，最后一个命令启动NGINX。
+
+### 详解
+您刚刚创建的文件指示apt软件包管理系统使用NGINX官方软件包存储库。 下面的命令下载NGINX GPG包签名密钥并将其导入apt。 提供apt签名密钥使apt系统能够验证来自存储库的包。 apt-get update命令指示apt系统从其已知的存储库刷新其包列表。 刷新包列表后，您可以从NGINX官方存储库安装NGINX。 安装后，最后一个命令启动NGINX。
+
+## 1.2 在RedHat/CentOS上安装
+### 需求
+你需要在RedHat/CentOS的机器上安装开源版本的NGINX
+### 解决方案
+创建一个名为 */etc/yum.repos.d/nginx.repo* 的文件，其中包含以下内容：
+>      [nginx]  
+>      name=nginx repo  
+>      baseurl=http://nginx.org/packages/mainline/OS/OSRELEASE/$basearch/  
+>      gpgcheck=0  
+>      enabled=1  
+
+更改文件，将URL末尾的操作系统替换为rhel或centos，具体取决于您的系统发行版本。 对于版本6.x或7.x，分别用6或7替换OSRELEASE。 然后，运行以下命令：
+```sh
+yum -y install nginx
+systemctl enable nginx
+systemctl start nginx  
+firewall-cmd --permanent --zone=public --add-port=80/tcp  
+firewall-cmd --reload
+```
+### 详解
+您刚刚创建的文件指示yum软件包管理系统使用NGINX官方开源软件包存储库。 下面的命令从官方存储库安装NGINX，指示systemd在启动时启用NGINX，并且现在启动NGINX服务。 为TCP协议打开80端口，这是HTTP的默认端口。 最后一个命令重新加载防火墙以提交更改。
