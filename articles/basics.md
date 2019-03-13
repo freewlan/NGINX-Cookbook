@@ -18,9 +18,6 @@ apt-get install -y nginx
 /etc/init.d/nginx start
 ```
 ### 详解
-您刚刚创建的文件指示apt软件包管理系统使用NGINX官方软件包存储库。 下面的命令下载NGINX GPG包签名密钥并将其导入apt。 提供apt签名密钥使apt系统能够验证来自存储库的包。 apt-get update命令指示apt系统从其已知的存储库刷新其包列表。 刷新包列表后，您可以从官方NGINX存储库安装NGINX。 安装后，最后一个命令启动NGINX。
-
-### 详解
 您刚刚创建的文件指示apt软件包管理系统使用NGINX官方软件包存储库。 下面的命令下载NGINX GPG包签名密钥并将其导入apt。 提供apt签名密钥使apt系统能够验证来自存储库的包。 apt-get update命令指示apt系统从其已知的存储库刷新其包列表。 刷新包列表后，您可以从NGINX官方存储库安装NGINX。 安装后，最后一个命令启动NGINX。
 
 ## 1.2 在RedHat/CentOS上安装
@@ -44,3 +41,11 @@ firewall-cmd --reload
 ```
 ### 详解
 您刚刚创建的文件指示yum软件包管理系统使用NGINX官方开源软件包存储库。 下面的命令从官方存储库安装NGINX，指示systemd在启动时启用NGINX，并且现在启动NGINX服务。 为TCP协议打开80端口，这是HTTP的默认端口。 最后一个命令重新加载防火墙以提交更改。
+
+## 1.3 安装NGINX Plus
+### 需求
+你需要安装NGINX Plus
+### 解决方案
+访问 http://cs.nginx.com/repo_setup 从下拉菜单中，选择您要安装的操作系统，然后按照说明操作。 安装方法与开源版本的NGINX安装类似; 但是，您需要安装证书才能验证NGINX Plus存储库。
+### 详解
+NGINX使该存储库安装指南保持最新，并附有安装NGINX Plus的说明。 根据您的操作系统和版本，这些说明略有不同，但有一个共性。 您必须登录NGINX官网才能下载用于对NGINX Plus存储库进行身份验的证书和密钥。
