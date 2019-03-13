@@ -5,3 +5,15 @@
 ### 需求
 你需要在Debian/Ubuntu的机器上安装开源版本的NGINX
 ### 解决方案
+创建一个名为 */etc/apt/sources.list.d/nginx.list* 的文件，其中包含以下内容：
+>      deb http://nginx.org/packages/mainline/OS/ CODENAME nginx  
+>      deb-src http://nginx.org/packages/mainline/OS/ CODENAME nginx
+
+更改文件，用ubuntu或debian替换URL末尾的OS，具体取决于您的系统发行版。 将CODENAME替换为您的分发代码名称; 如果是Debian,一般是jessie或者stretch，如果是Ubuntu，一般是trusty, xenial, artful, bionic。 然后，运行以下命令：
+```sh
+wget http://nginx.org/keys/nginx_signing.key  
+apt-key add nginx_signing.key  
+apt-get update  
+apt-get install -y nginx  
+/etc/init.d/nginx start
+```
