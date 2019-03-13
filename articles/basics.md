@@ -17,3 +17,5 @@ apt-get update
 apt-get install -y nginx  
 /etc/init.d/nginx start
 ```
+### 详解
+您刚刚创建的文件指示apt软件包管理系统使用NGINX官方软件包存储库。 下面的命令下载NGINX GPG包签名密钥并将其导入apt。 提供apt签名密钥使apt系统能够验证来自存储库的包。 apt-get update命令指示apt系统从其已知的存储库刷新其包列表。 刷新包列表后，您可以从官方NGINX存储库安装NGINX。 安装后，最后一个命令启动NGINX。
