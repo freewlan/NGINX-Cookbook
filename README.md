@@ -2,7 +2,7 @@
 ## 1. 基本信息
   - 1.0 [介绍](/articles/basics.md)
   - 1.1 [在Debian/Ubuntu上安装](/articles/basics.md##1.1)
-  - 1.2 在RedHat/CentO上安装
+  - 1.2 [在RedHat/CentO上安装](/articles/basics.md##1.2)
   - 1.3 安装NGINX Plus
   - 1.4 验证你的安装
   - 1.5 密钥文件，命令和目录
