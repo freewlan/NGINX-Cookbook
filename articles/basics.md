@@ -49,3 +49,28 @@ firewall-cmd --reload
 访问 http://cs.nginx.com/repo_setup 从下拉菜单中，选择您要安装的操作系统，然后按照说明操作。 安装方法与开源版本的NGINX安装类似; 但是，您需要安装证书才能验证NGINX Plus存储库。
 ### 详解
 NGINX使该存储库安装指南保持最新，并附有安装NGINX Plus的说明。 根据您的操作系统和版本，这些说明略有不同，但有一个共性。 您必须登录NGINX官网才能下载用于对NGINX Plus存储库进行身份验的证书和密钥。
+
+## 1.4 验证你的安装
+### 需求
+您想要验证NGINX的安装并检查安装的版本。
+### 解决方案
+您可以使用以下命令验证是否已安装并检查NGINX版本：
+```sh
+$ nginx -v
+nginx version: nginx/1.15.3
+```
+如此示例所示，响应显示NGINX版本。
+您可以使用以下命令确认NGINX正在运行：
+```sh
+$ ps -ef | grep nginx
+root      1738     1  0 19:54 ?  00:00:00 nginx: master process
+nginx     1739  1738  0 19:54 ?  00:00:00 nginx: worker process
+```
+ps命令列出正在运行的进程。通过使用管道符grep，您可以在输出中搜索特定单词。此示例使用grep搜索nginx。结果显示了两个正在运行的进程，一个master和一个worker。如果NGINX正在运行，您将始终看到主服务器和一个或多个工作进程。有关启动NGINX的说明，请参阅下一节。要了解如何将NGINX作为守护程序启动，请使用init.d或systemd方法。
+要验证NGINX是否正确返回请求，请使用浏览器向您的计算机发出请求或使用curl：
+```sh
+$ curl localhost
+```
+您将看到NGINX的默认HTML站点。
+### 详解
+nginx命令允许您与NGINX二进制文件交互以检查版本，列出已安装的模块，测试配置以及向主进程发送信号。 NGINX必须运行才能满足请求。 ps命令是确定NGINX是作为守护程序运行还是作为前台运行的万无一失的方法。默认情况下，NGINX提供的默认配置在端口80上运行静态站点HTTP服务器。您可以通过向本地主机上的计算机发出HTTP请求以及主机的IP和主机名来测试此默认站点。
