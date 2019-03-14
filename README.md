@@ -4,7 +4,7 @@
   - 1.1 [在Debian/Ubuntu上安装](/articles/basics.md#11-在debianubuntu上安装)
   - 1.2 [在RedHat/CentO上安装](/articles/basics.md#12-在redhatcentos上安装)
   - 1.3 [安装NGINX Plus](/articles/basics.md#13-安装nginx-plus)
-  - 1.4 验证你的安装
+  - 1.4 [验证你的安装](/articles/basics.md#14-验证你的安装)
   - 1.5 密钥文件，命令和目录
   - 1.6 静态内容服务
   - 1.7 平滑重启
