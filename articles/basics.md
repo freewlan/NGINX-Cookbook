@@ -74,3 +74,42 @@ $ curl localhost
 您将看到NGINX的默认HTML站点。
 ### 详解
 nginx命令允许您与NGINX二进制文件交互以检查版本，列出已安装的模块，测试配置以及向主进程发送信号。 NGINX必须运行才能满足请求。 ps命令是确定NGINX是作为守护程序运行还是作为前台运行的万无一失的方法。默认情况下，NGINX提供的默认配置在端口80上运行静态站点HTTP服务器。您可以通过向本地主机上的计算机发出HTTP请求以及主机的IP和主机名来测试此默认站点。
+
+## 1.5 密钥文件，命令和目录
+### 需求
+您需要了解NGINX重要的目录和命令。
+### 解决方案
+#### NGINX文件和目录
+*/etc/nginx/*
+> /etc/nginx 目录是NGINX服务器的默认配置根目录。在此目录中，您将找到指示NGINX如何操作的配置文件。 
+
+*/etc/nginx/nginx.conf*
+> /etc/nginx/nginx.conf 文件是NGINX服务使用的默认配置入口。 此配置文件为全局设置，包括工作进程、调优、日志记录、加载动态模块以及对其他NGINX配置文件的引用等内容设置。 在默认配置中，/etc/nginx/nginx.conf文件包含顶级http块，其中包含下一个目录中的所有配置文件。
+
+*/etc/nginx/conf.d/*
+> /etc/nginx/conf.d/ 目录包含默认的HTTP服务器配置文件。 此目录中以.conf结尾的文件包含在/etc/nginx/nginx.conf文件中的顶级http块中。 最佳做法是利用包含语句并以这种方式组织配置，以使配置文件保持简洁。 在某些软件包存储库中，此文件夹名为sites-enabled，配置文件从名为site-available的文件夹链接（不推荐使用这种方式）
+
+*/var/log/nginx/*
+> /var/log/nginx/ 目录是NGINX的默认日志目录。 在此目录中，您将找到access.log文件和error.log文件。 access.log包含NGINX服务的每个请求的记录。 如果启用了debug模块，则error.log文件包含错误事件和调试信息。
+
+#### NGINX命令
+*nginx -h*
+> 显示NGINX帮助菜单。
+
+*nginx -v*
+> 显示NGINX版本信息。
+
+*nginx -V*
+>显示NGINX版本，构建信息和配置参数，显示NGINX二进制文件内置的模块。
+
+*nginx -t*
+>测试NGINX配置。
+
+*nginx -T*
+>测试NGINX配置并将验证的配置打印到屏幕。 在寻求支持时，此命令很有用。
+
+*nginx -s*
+>-s 标志向NGINX主进程发送信号。您可以发送stop，quit，reload和reopen等信号。stop信号立即中断NGINX进程。quit信号在完成请求处理后停止NGINX进程。 reload信号重新加载配置。reopen信号指示NGINX重新打开日志文件。
+
+### 详解
+通过了解这些关键文件，目录和命令，您就可以开始使用NGINX了。 有了这些知识，您可以使用nginx -t命令更改默认配置文件并测试更改。 如果测试成功，您还可以使用nginx -s reload命令指示NGINX重新加载其配置。
