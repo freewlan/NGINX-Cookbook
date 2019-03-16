@@ -5,7 +5,7 @@
   - 1.2 [在RedHat/CentO上安装](/articles/basics.md#12-在redhatcentos上安装)
   - 1.3 [安装NGINX Plus](/articles/basics.md#13-安装nginx-plus)
   - 1.4 [验证你的安装](/articles/basics.md#14-验证你的安装)
-  - 1.5 [配置文件，命令和目录](/articles/basics.md#15-配置文件，命令和目录)
+  - 1.5 [配置文件，命令和目录](/articles/basics.md#15-配置文件命令和目录)
   - 1.6 静态内容服务
   - 1.7 平滑重启
 ## 2. 高性能负载均衡
