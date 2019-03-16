@@ -113,3 +113,36 @@ nginx命令允许您与NGINX二进制文件交互以检查版本，列出已安�
 
 ### 详解
 通过了解这些关键文件，目录和命令，您就可以开始使用NGINX了。 有了这些知识，您可以使用nginx -t命令更改默认配置文件并测试更改。 如果测试成功，您还可以使用nginx -s reload命令指示NGINX重新加载其配置。
+
+## 1.6 静态内容服务
+### 需求
+您需要使用NGINX提供静态内容服务。
+### 解决方案
+使用以下NGINX配置覆盖/etc/nginx/conf.d/default.conf中的默认HTTP服务器配置  
+示例
+```
+server {
+        listen 80 default_server;
+        server_name www.example.com;
+        location / {
+            root /usr/share/nginx/html;
+            # alias /usr/share/nginx/html;
+            index index.html index.htm;
+} }
+```
+### 详解
+此配置的意思是在80端口上通过HTTP提供静态文件服务，文件目录在/usr/share/nginx/html。此配置中的第一行定义了一个新的服务器块。 第二行指示NGINX侦听端口80，default_server参数指示NGINX使用此服务块作为80端口的默认服务.service_name指令定义应将哪些主机名请求定向到此服务器。 如果配置未将此服务块定义为default_server，则仅当HTTP主机名与提供给server_name指令的值相匹配时，NGINX才会将请求定向到此服务块。
+
+location模块根据URL中的路径来匹配配置。该示例使用 / 来匹配所有请求。root指令指示NGINX提供内容时查找静态文件的位置。 在查找请求的文件时，请求的URI将附加到root指令的值中。 如果我们为location指令提供了一个URI前缀，那么这将包含在附加路径中，除非我们使用别名目录而不是root。 最后，如果URI中没有提供进一步的路径，则index指令为NGINX提供默认文件或要检查的文件列表。
+
+## 1.7 平滑重启
+### 需求
+您需要重新加载配置而不影响当前的请求
+### 解决方案
+使用NGINX的reload方法可以在不停止服务的情况下实现配置的重新加载：
+```sh
+$ nginx -s reload
+```
+此示例使用NGINX二进制文件向主进程发送reload信号。
+### 详解
+在不停止服务的情况下重新加载NGINX配置，可以在不丢弃任何数据包的情况下即时更改配置。 比如在高可用的生产环境中，您需要在某个时刻更改负载平衡配置。 NGINX允许您在保持负载均衡器在线的同时执行此操作。 此功能支持无数种可能性，例如在生产环境中重新运行配置管理，或构建应用程序和群集感知模块以动态配置和重新加载NGINX以满足环境需求。
