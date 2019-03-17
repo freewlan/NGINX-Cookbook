@@ -9,8 +9,8 @@
   - 1.6 [静态内容服务](/articles/basics.md#16-静态内容服务)
   - 1.7 [平滑重启](/articles/basics.md#17-平滑重启)
 ## 2. 高性能负载均衡
-  - 2.0 介绍
-  - 2.1 HTTP负载均衡
+  - 2.0 [介绍](/articles/loadBalancing.md#20-介绍)
+  - 2.1 [HTTP负载均衡](/articles/loadBalancing.md#21-http负载均衡)
   - 2.2 TCP负载均衡
   - 2.3 UDP负载均衡
   - 2.4 负载均衡的实现方法
