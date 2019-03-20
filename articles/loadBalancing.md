@@ -36,15 +36,15 @@ HTTP upstream 模块控制HTTP的负载均衡。 此模块通过Unix套接字、
 使用NGINX的stream模块在upstream块上进行TCP服务器的负载均衡：
 ```
 stream {
-		upstream mysql_read {
-			server read1.example.com:3306  weight=5;
-			server read2.example.com:3306;
-			server 10.10.12.34:3306		backup;
-       }
-		server {
-			listen 3306;
-       	proxy_pass mysql_read;
- 		}
+	upstream mysql_read {
+		server read1.example.com:3306  weight=5;
+		server read2.example.com:3306;
+		server 10.10.12.34:3306		backup;
+	}
+	server {
+		listen 3306;
+       		proxy_pass mysql_read;
+ 	}
 }
 ```
 
@@ -56,3 +56,23 @@ TCP负载平衡由NGINX stream模块定义。与HTTP模块一样，stream模块�
 TCP负载平衡的upstream非常类似于HTTP的upstream，因为它将upstream资源定义为服务器，配置了Unix socket，IP或完全限定域名（FQDN），以及服务器权重，最大连接数，DNS解析器和连接加速期;还有可以设定服务器处于活动，关闭或备份模式。
 
 NGINX Plus为TCP负载平衡提供了更多功能。 NGINX Plus中提供的这些高级功能可以在本书中找到。所有负载平衡的运行状况检查将在本章后面介绍。
+
+## 2.3 UDP负载均衡
+### 需求
+您需要在两个或更多UDP服务器之间分配负载。
+
+### 解决方案
+使用NGINX的stream模块在upstream块上进行UDP服务器的负载均衡：
+将upstream块定义为udp:
+```
+ stream {
+        upstream ntp {
+            server ntp1.example.com:123  weight=2;
+            server ntp2.example.com:123;
+        }
+        server {
+            listen 123 udp;
+            proxy_pass ntp;
+        }
+}
+```
