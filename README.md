@@ -13,5 +13,5 @@
   - 2.1 [HTTP负载均衡](/articles/loadBalancing.md#21-http负载均衡)
   - 2.2 [TCP负载均衡](/articles/loadBalancing.md#22-tcp负载均衡)
   - 2.3 [UDP负载均衡](/articles/loadBalancing.md#23-udp负载均衡)
-  - 2.4 负载均衡的实现方法
+  - 2.4 [负载均衡的实现方法](/articles/loadBalancing.md#24-负载均衡的实现方法)
  
