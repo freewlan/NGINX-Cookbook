@@ -14,4 +14,13 @@
   - 2.2 [TCP负载均衡](/articles/loadBalancing.md#22-tcp负载均衡)
   - 2.3 [UDP负载均衡](/articles/loadBalancing.md#23-udp负载均衡)
   - 2.4 [负载均衡的实现方法](/articles/loadBalancing.md#24-负载均衡的实现方法)
+ ## 3. 流量管理
+  - 3.0 [介绍](/articles/TrafficManagement.md#30-介绍)
+  - 3.1 [AB测试](/articles/TrafficManagement.md#31-AB测试)
+  - 3.2 [使用GeoIP模块和数据库](/articles/TrafficManagement.md#32-使用GeoIP模块和数据库)
+  - 3.3 [限制基于国家的访问](/articles/TrafficManagement.md#33-限制基于国家的访问)
+  - 3.4 [寻找原始客户](/articles/TrafficManagement.md#34-寻找原始客户)
+  - 3.5 [限制连接](/articles/TrafficManagement.md#35-限制连接)
+  - 3.6 [限制频率](/articles/TrafficManagement.md#36-限制频率)
+  - 3.7 [限制流量](/articles/TrafficManagement.md#37-限制流量)
  
